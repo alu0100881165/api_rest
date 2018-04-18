@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Formulario AJAX</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  </head>
+
+  <body>
+    <form id="myform">
+      PostId: <input class="input" name="postId" type="text">
+      <button type="submit" id="mybutton">Submit</button>
+    </form>
+    <p id="result"></p>
+
+  </body>
+  <script>
+    $("#mybutton").click(function(){
+        // $.get('https://jsonplaceholder.typicode.com/comments', $('#myform').serialize(), success: function(response){
+        //   console.log(response);
+        //   $("#result").html(response);
+        //   console.log(response);
+        // });
+        $.ajax({
+          method : "GET",
+          url : "https://jsonplaceholder.typicode.com/comments",
+          data : $("#myform").serialize(),
+          success : function(variable)
+          {
+            alert('Funciono');
+          },
+
+          error: function(jqxhr, status, exception) {
+            alert('Exception:', status);
+          },
+
+          complete : function(xhr, status) {
+            alert("Petición realizada");
+          }
+        });
+    });
+  </script>
+</html>
