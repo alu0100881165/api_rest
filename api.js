@@ -5,6 +5,7 @@ var Texto = "";
 
 server.get('/api/productos/all', (req, res, next) => {
 
+    res.json({"foo":"bar"});
     next();
 });
 
